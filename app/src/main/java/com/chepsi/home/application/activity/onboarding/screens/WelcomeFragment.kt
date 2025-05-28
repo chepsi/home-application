@@ -5,8 +5,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.chepsi.home.application.R
+import com.chepsi.home.application.activity.onboarding.model.OnboardingEvents
+import com.chepsi.home.application.activity.onboarding.model.OnboardingEvents.OnNextScreenEvent
 
-class WelcomeFragment(val onContinueClicked: () -> Unit) : Fragment(R.layout.fragment_welcome) {
+class WelcomeFragment(val onEvent: (OnboardingEvents) -> Unit) : Fragment(R.layout.fragment_welcome) {
     private val btnContinue by lazy {
         requireView().findViewById<TextView>(R.id.btn_welcome_continue)
     }
@@ -18,7 +20,7 @@ class WelcomeFragment(val onContinueClicked: () -> Unit) : Fragment(R.layout.fra
 
     private fun setupViews() {
         btnContinue.setOnClickListener {
-            onContinueClicked()
+            onEvent(OnNextScreenEvent)
         }
     }
 }

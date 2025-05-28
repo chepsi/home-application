@@ -2,4 +2,6 @@
     <string name="app_name">Launcher</string>
     <string name="txt_continue">Continue</string>
     <string name="txt_welcome">Welcome</string>
+    <string name="txt_guidance">To Continue, set the app as your default home</string>
+    <string name="txt_thank_you_for_setting_as_default_home">Thank you for setting as default home</string>
 </resources>
