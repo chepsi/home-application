@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Launcher</string>
+    <string name="txt_continue">Continue</string>
+    <string name="txt_welcome">Welcome</string>
 </resources>
