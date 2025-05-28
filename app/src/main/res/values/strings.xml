@@ -4,4 +4,5 @@
     <string name="txt_welcome">Welcome</string>
     <string name="txt_guidance">To Continue, set the app as your default home</string>
     <string name="txt_thank_you_for_setting_as_default_home">Thank you for setting as default home</string>
+    <string name="txt_this_is_the_default_app">This is the default App.</string>
 </resources>

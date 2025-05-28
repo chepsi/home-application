@@ -1,11 +1,9 @@
 package com.chepsi.home.application.activity.home
 
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +13,10 @@ import com.chepsi.home.application.activity.isAppDefaultHome
 import com.chepsi.home.application.activity.onboarding.OnboardingActivity
 
 class HomeActivity : AppCompatActivity() {
+
+    private val txtHomeInformation by lazy {
+        findViewById<TextView>(R.id.txt_home)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +32,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (!isAppDefaultHome(this)){
+        if (!isAppDefaultHome(this)) {
             startActivity(Intent(this, OnboardingActivity::class.java))
+        } else {
+            txtHomeInformation.visibility = View.VISIBLE
         }
     }
 
