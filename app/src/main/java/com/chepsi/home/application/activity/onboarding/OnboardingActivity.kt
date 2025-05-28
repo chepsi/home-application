@@ -10,13 +10,13 @@ import com.chepsi.home.application.R
 
 class OnboardingActivity : AppCompatActivity() {
 
-    private val onboarding_pager by lazy {
+    private val onboardingPager by lazy {
         findViewById<ViewPager2>(R.id.onboarding_pager)
     }
 
     private val onboardingAdapter by lazy {
         OnboardingPagerAdapter(this, onContinueClicked = {
-            onboarding_pager.currentItem = onboarding_pager.currentItem + 1
+            onboardingPager.currentItem = onboardingPager.currentItem + 1
         })
     }
 
@@ -34,6 +34,6 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun setupViews(){
-        onboarding_pager.adapter = onboardingAdapter
+        onboardingPager.adapter = onboardingAdapter
     }
 }
