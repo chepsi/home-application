@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.chepsi.home.application.R
 import com.chepsi.home.application.activity.home.HomeActivity
+import com.chepsi.home.application.activity.isAppDefaultHome
 import com.chepsi.home.application.activity.onboarding.model.OnboardingEvents
 
 class OnboardingActivity : AppCompatActivity() {
@@ -23,18 +24,27 @@ class OnboardingActivity : AppCompatActivity() {
         OnboardingPagerAdapter(this, onEvent = {
             when (it) {
                 is OnboardingEvents.OnNextScreenEvent -> onNextScreen()
-                is OnboardingEvents.OnSetDefaultHomeEvent -> {onSetDefaultHome()}
+                is OnboardingEvents.OnSetDefaultHomeEvent -> {
+                    onSetDefaultHome()
+                }
+
                 is OnboardingEvents.OnFinishEvent -> onFinish()
             }
         })
     }
 
-    private fun onSetDefaultHome(){
-        openDefaultHomeAppSettings()
+    private fun onSetDefaultHome() {
+        if (!isAppDefaultHome(this)) {
+            openDefaultHomeAppSettings()
+        } else {
+            onNextScreen()
+        }
     }
+
     private fun onNextScreen() {
         onboardingPager.currentItem = onboardingPager.currentItem + 1
     }
+
     private fun onFinish() {
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
@@ -63,7 +73,8 @@ class OnboardingActivity : AppCompatActivity() {
         try {
             startActivity(intent)
         } catch (e: Exception) {
-            Toast.makeText(this, "Could not open default home app settings.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Could not open default home app settings.", Toast.LENGTH_SHORT)
+                .show()
             e.printStackTrace()
         }
     }
